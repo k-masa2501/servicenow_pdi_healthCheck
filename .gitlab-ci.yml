@@ -1,9 +1,9 @@
 stages:
   - test
 
-cache:
-  paths:
-    - node_modules/
+#cache:
+#  paths:
+#    - node_modules/
 
 .node_template:
   # image: buildkite/puppeteer
