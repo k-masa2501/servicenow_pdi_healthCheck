@@ -1,0 +1,17 @@
+image: circleci/node:14-browsers
+
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - npm install
+    - node snowpdi_start.js
+  artifacts:
+    expire_in: 2 week
+    when: always
+    paths:
+      - result.png
+  tags:
+    - docker
