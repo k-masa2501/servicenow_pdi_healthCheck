@@ -1,17 +1,26 @@
-image: node:latest
-
 stages:
   - test
 
-test:
+cache:
+  paths:
+    - node_modules/
+
+.node_template:
+  image: buildkite/puppeteer
+
+tests:
+  extends: .node_template
   stage: test
-  script:
+  variables:
+    CI: "true"
+  before_script:
     - npm install
+  script:
     - node snowpdi_start.js
   artifacts:
     expire_in: 2 week
     when: always
     paths:
       - result.png
-  tags:
-    - docker
+
+
